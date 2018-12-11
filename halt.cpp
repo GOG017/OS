@@ -7,7 +7,7 @@ void halt()
 	int i, j;
 
 	/*1. write back the current dir */
-	// chdir("..");
+	chdir("..");
 	iput(cur_path_inode);
 
 	/*2. free the u_ofile and sys_ofile and inode*/
