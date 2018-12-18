@@ -105,7 +105,11 @@ int shell(int user_id, char *str)
 		if (token[0] == '-')
 		{
 			if (token[1] == 'a')
+			{
 				mode = FAPPEND;
+				token = strtok(NULL, seps);
+				sscanf(token, "%d", &size);
+			}
 		}
 		else
 		{

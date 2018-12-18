@@ -22,6 +22,7 @@ short open(int user_id, char *filename, char openmode)
 	}
 	if (!access(user_id, inode, openmode))
 	{
+		// printf("%hd\n", inode->di_mode);
 		printf("\nfile open has not access!!!\n");
 		iput(inode);
 		return -1;

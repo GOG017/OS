@@ -50,14 +50,16 @@ int write(int fd, char *buf, int size)
 	char *temp_buf;
 
 	inode = sys_ofile[user[user_id].u_ofile[fd]].f_inode;
-	if (!(sys_ofile[user[user_id].u_ofile[fd]].f_flag & FWRITE))
+	if (!(sys_ofile[user[user_id].u_ofile[fd]].f_flag & FWRITE) && 
+		!(sys_ofile[user[user_id].u_ofile[fd]].f_flag & FAPPEND))
 	{
 		printf("\nthe file is not opened for write\n");
 		return 0;
 	}
 	//add by liwen to check the filesize and alloc the BLOCK
 	off = sys_ofile[user[user_id].u_ofile[fd]].f_off;
-	block = ((off + size) - inode->di_size) / BLOCKSIZ; //�������
+	block = (((int)off + size) - inode->di_size) / BLOCKSIZ;
+	printf("%d\n", block);
 	if (((off + size) - inode->di_size) % BLOCKSIZ)
 		block++;
 	if (filsys.s_nfree < block)

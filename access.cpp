@@ -33,6 +33,14 @@ int access(int user_id, struct inode *inode, short mode)
 		if ((inode->di_mode & UDIEXICUTE) && (user[user_id].u_uid == inode->di_uid))
 			return 1;
 		return 0;
+	case FAPPEND:
+		if (inode->di_mode & ODIWRITE)
+			return 1;
+		if ((inode->di_mode & GDIWRITE) && (user[user_id].u_gid == inode->di_gid))
+			return 1;
+		if ((inode->di_mode & UDIWRITE) && (user[user_id].u_uid == inode->di_uid))
+			return 1;
+		return 0;
 	} //swith
 	return 0;
 }
