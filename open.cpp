@@ -72,7 +72,7 @@ short open(int user_id, char *filename, char openmode)
 	if (openmode & FWRITE)
 	{
 		k = inode->di_size % BLOCKSIZ ? 1 : 0;
-		for (i = 0; i < inode->di_size / BLOCKSIZ + k; i++)
+		for (i = inode->di_size / BLOCKSIZ + k - 1; i >= 0 ; i--)
 			bfree(inode->di_addr[i]);
 		inode->di_size = 0;
 	}

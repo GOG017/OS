@@ -17,6 +17,7 @@ int creat(int user_id, char *filename, short mode)
 		if (inode->di_mode & DIFILE)
 		{ //如果不是文件
 			printf("存在同名文件！\n");
+			return -1;
 		}
 		if (access(user_id, inode, WRITE) == 0)
 		{
