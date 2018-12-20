@@ -150,6 +150,5 @@ void format()
 
 	filsys.s_pfree = NICFREE - j + 1;
 	memcpy(disk + BLOCKSIZ, &filsys, sizeof(struct filsys));
-
 	return;
 }
