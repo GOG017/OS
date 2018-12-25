@@ -30,7 +30,7 @@ void useradd(int user_id, unsigned short username)
         {
             if (num >= 0)
             {
-                pwd[--num].p_uid = username;
+                pwd[num].p_uid = username;
                 pwd[num].p_gid = (short)2;
                 strcpy(pwd[num].password, "1234");
                 printf("用户%hu创建成功，初始密码为：1234，初始组号为：2\n", username);

@@ -12,8 +12,8 @@ char commands[CNUM][CLEN] = {
 	"write",
 	"read",
 	"user",
-	"passwd",
-	"adduser"};
+	"passwd"
+};
 
 int getcid(char *command)
 {
@@ -206,23 +206,6 @@ int shell(int user_id, char *str)
 		}
 		passwd(user_id, token);
 		break;
-	case 10:
-	{
-		token = strtok(NULL, seps);
-		// printf("%s\n", token);
-		if (token == NULL)
-		{
-			printf("adduser 命令的正确格式为adduser [-u uid]，默认登录密码为 123，请检查命令!\n");
-			break;
-		}
-		unsigned short username = 0, k = 1;
-		int len = strlen(token);
-		for (int i = len - 1; i >= 0; i--)
-			username += k * (short)(token[i] - '0'), k *= 10;
-		printf("%hd\n", username);
-		useradd(user_id, username);
-		break;
-	}
 	case 0:
 		return 0;
 	default:

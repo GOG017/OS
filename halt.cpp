@@ -41,7 +41,6 @@ void halt()
 	fclose(out);
 
 	/*5. close the file system column*/
-	// (DINODEBLK + FILEBLK + 2)
 	
 	/*6. say GOOD BYE to all the user*/
 	printf("\nGood Bye. See You Next Time. Please turn off the switch\n");
